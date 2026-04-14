@@ -5,7 +5,7 @@ This project explores the correlation between Counter-Strike 2 in-game item pric
 ## 🚀 Analysis Workflow (Based on Course Guidelines)
 
 ### 1. Data Collection & Preprocessing
-- **Steam Market Data:** Scraped ~200 Tier-1 skins and stickers using custom Python scripts (`mega_scraper.py`).
+- **Steam Market Data:** Scraped ~200 Tier-1 skins and stickers using custom Python scripts (`import items.py`).
 - **Twitch Data:** Integrated daily average viewership data for CS2.
 - **Normalization:** Standardized date formats and handled missing values using forward-fill (ffill).
 
