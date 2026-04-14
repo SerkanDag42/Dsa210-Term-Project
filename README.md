@@ -23,5 +23,3 @@ This project explores the correlation between Counter-Strike 2 in-game item pric
 - **Goal:** Predicting the Total Portfolio Value based on viewership numbers and tournament status.
 - **Performance:** High R-Squared accuracy, visualized via Actual vs. Predicted scatter plots.
 
-## 🏷️ Versioning
-Final submission is tagged as **milestone1**.
