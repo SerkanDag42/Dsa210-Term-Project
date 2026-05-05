@@ -7,32 +7,32 @@ import json
 import os
 from datetime import datetime
 
-# Dosya yolları
+# File paths
 TXT_FILE = "itemler.txt"
 CSV_FILE = "dsa210_mega_data.csv"
 
-# TXT dosyasını oku
+# Read TXT file
 if not os.path.exists(TXT_FILE):
-    print(f"HATA: {TXT_FILE} bulunamadı. Lütfen listeyi oluşturun.")
+    print(f"ERROR: {TXT_FILE} not found. Please create the list.")
     exit()
 
 with open(TXT_FILE, "r", encoding="utf-8") as f:
-    # Boşlukları temizle ve boş satırları at
+    # Trim whitespace and skip empty lines
     items_to_track = [line.strip() for line in f.readlines() if line.strip()]
 
 master_df = pd.DataFrame()
 
-# Eğer eski verimiz varsa yükle (Kaldığı yerden devam etme mantığı)
+# If existing data exists, load it (Resume logic)
 if os.path.exists(CSV_FILE):
     master_df = pd.read_csv(CSV_FILE)
     master_df['date'] = pd.to_datetime(master_df['date'])
     existing_items = master_df.columns.tolist()
     
-    # Zaten indirilmiş olanları listeden çıkar
+    # Exclude already downloaded items
     items_to_track = [item for item in items_to_track if item not in existing_items]
-    print(f"✅ CSV dosyası bulundu! Zaten inmiş olan itemler es geçilecek.")
+    print(f"✅ CSV file found! Already downloaded items will be skipped.")
 
-print(f"🚀 MEGA OPERASYON: Çekilecek {len(items_to_track)} yeni item bulundu!")
+print(f"🚀 MEGA OPERATION: Found {len(items_to_track)} new items to fetch!")
 print("-" * 60)
 
 headers = {
@@ -41,7 +41,7 @@ headers = {
 }
 
 for index, item in enumerate(items_to_track):
-    print(f"[{index+1}/{len(items_to_track)}] Çekiliyor: {item}")
+    print(f"[{index+1}/{len(items_to_track)}] Fetching: {item}")
     
     encoded_item = urllib.parse.quote(item)
     url = f"https://steamcommunity.com/market/listings/730/{encoded_item}"
@@ -61,7 +61,7 @@ for index, item in enumerate(items_to_track):
                     raw_date = row[0][:11] 
                     date_obj = datetime.strptime(raw_date, "%b %d %Y").date()
                     
-                    # 2023 sonrası (CS2 Odaklı)
+                    # Focus on CS2 era (post-2023)
                     if date_obj >= datetime.strptime("2023-01-01", "%Y-%m-%d").date():
                         parsed_data.append({'date': date_obj, item: row[1]})
                 
@@ -76,32 +76,32 @@ for index, item in enumerate(items_to_track):
                     else:
                         master_df = pd.merge(master_df, temp_df, on='date', how='outer')
                     
-                    # Her itemden sonra kaydet
+                    # Save after each item
                     save_df = master_df.sort_values('date').ffill()
                     try:
                         save_df.to_csv(CSV_FILE, index=False)
-                        print(f"  -> Başarılı! {item} CSV'ye yazıldı.")
+                        print(f"  -> Success! {item} written to CSV.")
                     except PermissionError:
-                        print("  -> DİKKAT: CSV açık. Kapatırsan bir sonrakinde yazılacak.")
+                        print("  -> WARNING: CSV file is open. Please close it; will retry next iteration.")
                 else:
-                    print(f"  -> Es geçildi: 2023 sonrasında veri yok.")
+                    print(f"  -> Skipped: No data found after 2023.")
             else:
-                print("  -> Hata: İsim yanlış olabilir veya satılmıyor.")
+                print("  -> Error: Item name might be incorrect or no listings available.")
         
         elif response.status_code == 429:
-            print("  -> DİKKAT (429): Steam 'Biraz dur' dedi. KOD DURDURULDU.")
-            print(f"  -> {CSV_FILE} güvende. 10-15 dk bekle, sonra kodu tekrar çalıştır.")
-            print("  -> Zaten inenleri otomatik atlayıp kaldığı yerden devam edecek!")
+            print("  -> WARNING (429): Steam rate limit exceeded. SCRIPT STOPPED.")
+            print(f"  -> {CSV_FILE} is safe. Wait 10-15 minutes before running the script again.")
+            print("  -> Already downloaded items will be automatically skipped on resume!")
             break
         else:
-            print(f"  -> Hata kodu: {response.status_code}")
+            print(f"  -> Error code: {response.status_code}")
             
     except Exception as e:
-        print(f"  -> Beklenmedik hata (Atlandı): {e}")
+        print(f"  -> Unexpected error (Skipped): {e}")
     
-    # Steam'i üzmemek için 18 saniye uyku
+    # 18-second sleep to respect Steam's rate limit
     if index < len(items_to_track) - 1:
         time.sleep(18)
 
 print("-" * 60)
-print(f"🎉 İŞLEM DURDU VEYA BİTTİ. Güncel dosya: {CSV_FILE}")
+print(f"🎉 OPERATION HALTED OR FINISHED. Current file: {CSV_FILE}")
