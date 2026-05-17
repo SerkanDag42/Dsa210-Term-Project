@@ -1,67 +1,69 @@
-# 📈 CS2 Market Analysis & Viewership Correlation Project
+# 📈 Counter-Strike 2 Marketplace & Esports Viewership Dynamics
+### 📊 DSA 210 - Introduction to Data Science Final Term Project
 
 **University:** Sabancı University  
 **Course:** DSA 210 - Introduction to Data Science  
 **Student:** Serkan Dağ  
-**Semester:** Term Project
+**Academic Semester:** Spring 2026  
 
 ---
 
 ## 📌 Project Overview
-This project investigates the macroeconomic relationship between Counter-Strike 2 (CS2) professional e-sports viewership on Twitch and the in-game cosmetic item economy. The main objective is to understand if and how attention metrics (viewers) inject volatility into digital item prices, and whether we can categorize the market into distinct economic states.
-
-## 📂 Project Directory Structure
-
-Here is a breakdown of the files included in this repository and their purposes:
-
-### 1. Data Collection & Processing Scripts
-*   `itemler.txt`: Contains the list of targeted Tier-1 CS2 items (skins/stickers) for the analysis.
-*   `import items.py`: Custom Python scraper/API script used to fetch historical price data from the Steam Community Market.
-*   `merger.py`: Data engineering script used to clean and merge raw market data with the viewership data.
-*   `final_analysis.py`: Contains the standalone Python code for statistical hypothesis testing and Machine Learning models.
-
-### 2. Datasets
-*   `cs2_gunluk_izleyici.csv`: Raw dataset containing daily average Twitch viewership for CS2.
-*   `dsa210_mega_data.csv`: Raw aggregated market dataset containing daily prices of the scraped CS2 items.
-*   `enriched_market_data.csv`: The final, preprocessed, and merged dataset ready for EDA and Machine Learning.
-
-### 3. Notebooks (The Core Analysis)
-*   `DSA210_CS2_Analysis_Report.ipynb`: **The main Jupyter Notebook.** This file contains the entire pipeline end-to-end (EDA, Hypothesis Testing, Random Forest, and K-Means Clustering) along with analytical commentary. *(Please review this file for the complete project narrative).*
-*   `ml.ipynb`: A supplementary scratchpad notebook used during the development of the ML models.
-
-### 4. Output Visualizations
-*   `final_tournament_twitch_impact.png`: Dual-axis EDA chart showing the visual correlation between Major tournaments, viewership spikes, and portfolio value.
-*   `ml_analysis_results.png`: Visual outputs of the Random Forest Regressor and Feature Importance analysis.
-*   `cs2_kmeans_market_states.png`: The final scatter plot from Milestone 2 showing the K-Means clustered market states.
+This project explores the macroeconomic relationship between Counter-Strike 2 (CS2) professional esports viewership data on Twitch and the internal digital asset market on Steam. The main objective is to analyze whether community engagement spikes inject structural changes into item prices, categorize the market into autonomous economic states, and test the predictability of a digital commodity market using external social interest parameters.
 
 ---
 
-## 🚀 Analysis Workflow & Methodology
+## 📂 Repository Components & File Structure
 
-### Milestone 1: EDA, Hypothesis Testing & Supervised Learning
-**1. Exploratory Data Analysis (EDA)**
-- **Market Index:** Calculated the **Total Portfolio Value (Sum)** to represent overall macroeconomic trends.
-- **Visual Correlation:** Created a dual-axis plot (`final_tournament_twitch_impact.png`) visually suggesting that massive viewership spikes align with market inflation.
+All project files are maintained directly in the root directory for absolute configuration stability. Below is a complete guide to the repository components:
 
-**2. Statistical Hypothesis Testing**
-- **Pearson Correlation Test:** Proved a statistically significant but non-linear relationship between viewership and market value ($p < 0.05$, $r = 0.0717$). 
-- **Two-Sample T-Test:** Definitively proved that market volatility during tournament periods is statistically different (higher) than in normal periods.
+### 1. Data Collection & Scraping Engine
+* `itemler.txt`: Source catalog text file containing the selected list of high-tier CS2 skins and stickers analyzed.
+* `import items.py`: Custom pipeline script pulling historical live market data from the Steam Community Market API.
+* `scrape_tournaments.py`: Core web-scraping script built with BeautifulSoup that successfully targets local Liquipedia architecture to harvest major esports event timelines without network firewalls.
+* `merger.py`: Data engineering utility aligning independent timelines by synchronizing market indices and stream counts.
 
-**3. Predictive Modeling (Supervised Learning)**
-- We trained a **Random Forest Regressor** to predict exact market values based on viewership and tournament flags.
-- **Finding:** The model yielded a negative R-Squared ($-0.1859$). This was a crucial analytical finding: the CS2 economy has internal momentum, speculative delays, and price stickiness. It cannot be linearly predicted *just* by counting viewers. **This specific predictive limitation laid the exact groundwork and justification for Milestone 2.**
+### 2. Operational Datasets
+* `liquipedia.html`: The captured local HTML source file representing the S-Tier tournament database from Liquipedia.
+* `tournaments.csv`: The clean, structured calendar dataset extracted by our scraper containing start dates, end dates, names, and tiers of events.
+* `cs2_gunluk_izleyici.csv`: Daily historical time-series dataset containing average Twitch streaming metrics for CS2.
+* `dsa210_mega_data.csv`: Aggregated transaction value matrix holding historical daily asset values for indexed weapon skins.
+* `enriched_market_data.csv` & `clean_merged_data.csv`: Normalized and merged operational datasets prepared dynamically for statistical models.
 
-### Milestone 2: Market State Clustering (Unsupervised Learning)
-To address the predictive limitations found in Milestone 1, we pivoted our methodology to Unsupervised Learning. Instead of trying to predict the *exact price*, we aimed to understand the *macro-behavior* of the market.
+### 3. Comprehensive Analysis Notebooks
+* `1_EDA_and_Hypothesis.ipynb`: **Core Statistical Hub.** Contains data parsing, baseline indexing, and standard curriculum hypothesis tests (Pearson, T-Test, and ANOVA).
+* `2_ML_Modeling.ipynb`: **Core Modeling Hub.** Implements unsupervised K-Means structural segmentation and supervised multi-model regression architectures.
+* `DSA210_CS2_Analysis_Report.ipynb` & `knn.ipynb`: Supplementary environment logs and initial development scratchpads.
 
-- **K-Means Clustering:** Applied K-Means ($K=3$) using `StandardScaler` to normalize viewership and price magnitudes.
-- **Conclusion:** The algorithm successfully and autonomously categorized the CS2 economy into three distinct states with a solid Silhouette Score ($0.464$):
-  1. **Hype Market** (Peak Viewers / Inflated Price)
-  2. **Transition / Anomaly Period** (Transition phases showing price stickiness)
-  3. **Stagnant Market** (Low Viewers / Baseline Price)
-- **Final Insight:** While predicting exact daily prices is highly complex, the overarching macro-states of the game's economy are demonstrably driven by e-sports attention.
+### 4. Empirical Result Plots
+* `final_tournament_twitch_impact.png`: Dual-axis visualization illustrating matching trends between tournament dates, stream spikes, and overall market expansion.
+* `cs2_kmeans_market_states.png` & `kmeans_evaluation_professional.png`: Visualization output mapping macro market clustering boundaries.
+* `ml_final_strict_hypothesis.png`: Final validation chart pairing comparative cross-model evaluation grids alongside empirical feature weights.
+
+---
+
+## 🚀 Analytical Architecture & Methodology
+
+### Phase 1: Exploratory Data Analysis & Classical Hypotheses
+1. **The Market Index Framework:** Individual skin prices were mathematically aggregated into a composite **Total Market Value** index to capture underlying macroeconomic trends rather than independent product variance.
+2. **Pearson Correlation Check:** Evaluated the linear overlap between raw platform viewership metrics and pricing scales. Results yielded a statistically significant but low linear dependency, pointing toward speculative delays rather than immediate reactions.
+3. **Independent Two-Sample T-Test:** Evaluated the market value distributions by segmenting active tournament days against standard regular days. The null hypothesis was strongly rejected ($p < 0.05$), proving that competitive windows systematically shift item pricing baselines.
+4. **One-Way ANOVA Framework:** Checked whether separate tournament tiers (Valve-sponsored Majors vs. independent S-Tier events) impact asset valuation differently. The variance test proved that varying tournament tiers create distinct financial shocks inside the ecosystem.
+
+### Phase 2: Unsupervised Learning (Market State Clustering)
+To extract clean structural behaviors from highly fluctuating economic periods, we applied an unsupervised framework using **K-Means Clustering ($k=3$)**:
+* Raw financial inputs were standardized using a `StandardScaler` after processing log-transformations to handle severe data skewness.
+* The model autonomously partitioned the CS2 marketplace grid into 3 macro states with a robust silhouette efficiency check ($0.464$):
+  1. *Stagnant Market:* Lower baseline community interaction paired with standard baseline asset indices.
+  2. *Transition Phase:* Intermediate points showcasing pricing stickiness and transaction delays.
+  3. *Hype Market:* Explosive tournament streaming volumes driving market expansion.
+
+### Phase 3: Supervised Learning (Predictive Modeling Framework)
+We benchmarked four regression algorithms—**Linear Regression**, **Optimized KNN Regressor** (tuned via `GridSearchCV` bounding), **Random Forest**, and **Gradient Boosting**—using an 80/20 train-test split pattern:
+* **The Predictive Reality ($R^2 \approx 0$):** Cross-validation metrics resulted in baseline $R^2$ tracking close to zero across independent parameters. In quantitative finance, this matches the **Random Walk Hypothesis**. This outcome confirms our pipeline is completely free of **Target Leakage**; predicting precise asset values using only basic daily crowd volume is bounded by market efficiency.
+* **Feature Importance Profiling:** Despite low predictive linearity, isolating node-split ratios inside the Gradient Boosting framework provided clear confirmation of our primary assumption. Daily streaming crowd volume (`ort_izleyici`) holds over **80%** of the feature importance score, proving it is the single most dominant external factor guiding virtual asset market fluctuations.
 
 ---
 
 ## 🏷️ Versioning
-Final submission is tagged as **Milestone 2 (Final Term Project)**.
+Final release submission configured for **DSA 210 Term Project Final Delivery**.
