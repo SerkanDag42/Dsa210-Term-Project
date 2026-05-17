@@ -22,13 +22,15 @@ All project files are maintained directly in the root directory for absolute con
 * `import items.py`: Custom pipeline script pulling historical live market data from the Steam Community Market API.
 * `scrape_tournaments.py`: Core web-scraping script built with BeautifulSoup that successfully targets local Liquipedia architecture to harvest major esports event timelines without network firewalls.
 * `merger.py`: Data engineering utility aligning independent timelines by synchronizing market indices and stream counts.
+* `scrape_twitch_viewership.py`: Python pipeline script designed to handle external API streams or dynamically reconstruct historical Twitch viewership data to ensure total pipeline autonomy.
 
 ### 2. Operational Datasets
 * `liquipedia.html`: The captured local HTML source file representing the S-Tier tournament database from Liquipedia.
 * `tournaments.csv`: The clean, structured calendar dataset extracted by our scraper containing start dates, end dates, names, and tiers of events.
 * `cs2_gunluk_izleyici.csv`: Daily historical time-series dataset containing average Twitch streaming metrics for CS2.
 * `dsa210_mega_data.csv`: Aggregated transaction value matrix holding historical daily asset values for indexed weapon skins.
-* `enriched_market_data.csv` & `clean_merged_data.csv`: Normalized and merged operational datasets prepared dynamically for statistical models.
+* `enriched_market_data.csv` : Normalized and merged operational datasets prepared dynamically for statistical models.
+
 
 ### 3. Comprehensive Analysis Notebooks
 * `1_EDA_and_Hypothesis.ipynb`: **Core Statistical Hub.** Contains data parsing, baseline indexing, and standard curriculum hypothesis tests (Pearson, T-Test, and ANOVA).
