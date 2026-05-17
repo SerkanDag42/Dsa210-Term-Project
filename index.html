@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS2 Market Dynamics & Viewership Analytics</title>
+    <title>CS2 Market Dynamics & Viewership Analytics | Serkan Dağ</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -29,6 +29,7 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
+            padding-top: 75px; /* Added padding to prevent content from hiding under navbar */
         }
 
         /* Navbar Layout */
@@ -83,9 +84,9 @@
             color: var(--primary-neon);
         }
 
-        /* Hero Section */
+        /* Hero Section - Matching Reference Profile Layout */
         .hero-section {
-            padding: 140px 20px 80px 20px;
+            padding: 60px 20px 80px 20px; /* Reduced top padding as we have body padding-top */
             background: linear-gradient(180deg, #152232 0%, #0b1119 100%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -188,6 +189,7 @@
             color: var(--bg-dark);
         }
 
+        /* Standard Rounded Profile Wrapper Matching Reference Layout */
         .hero-avatar {
             width: 320px;
             height: 320px;
@@ -195,12 +197,13 @@
             border: 4px solid var(--bg-card);
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            flex-shrink: 0; /* Prevents image from shrinking in small viewports */
         }
 
         .hero-avatar img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Important to keep aspect ratio while filling circular container */
         }
 
         /* Sections Structural Pattern */
@@ -315,6 +318,22 @@
             font-size: 0.85rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
+
+        /* Mobile Responsiveness Framework */
+        @media (max-width: 900px) {
+            .hero-container {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 30px;
+            }
+            .hero-content h1 { font-size: 2.2rem; }
+            .metrics-grid {
+                justify-content: center;
+                grid-template-columns: repeat(4, 80px);
+            }
+            .metric-val { font-size: 1.4rem; }
+            .nav-menu { display: none; } /* Simplified mobile view */
+        }
     </style>
 </head>
 <body>
@@ -322,7 +341,7 @@
     <header>
         <div class="nav-container">
             <div class="logo">
-                <i class="fa-solid : transparent fa-chart-line"></i> SkinSight CS2
+                <i class="fa-solid fa-chart-line"></i> SkinSight CS2
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="active">Home</a></li>
@@ -368,7 +387,7 @@
                 </div>
             </div>
             <div class="hero-avatar">
-                <img src="https://avatars.githubusercontent.com/u/150000000?v=4" alt="Serkan Dağ Profile Placeholder">
+                <img src="image_5e754e.jpg" alt="Serkan Dağ Profile Picture">
             </div>
         </div>
     </section>
@@ -377,7 +396,7 @@
         <h2 class="section-title"><i class="fa-solid fa-heart"></i> Motivation</h2>
         <div class="section-subtitle">Why This Research Matters</div>
         <div class="content-card">
-            <p>The explosive rise of modern gaming ecosystems has transformed simple in-game cosmetic layers into highly liquid, structured commodities. The Counter-Strike 2 marketplace features its own operational index boards, functioning with volatility profiles comparable to traditional high-frequency asset derivatives boards.</p>
+            <p>The explosive rise of modern gaming ecosystems has transformed in-game cosmetic layers into highly liquid, structured commodities. The Counter-Strike 2 marketplace features its own operational index boards, functioning with volatility profiles comparable to traditional high-frequency asset derivatives boards.</p>
             <p>As an active explorer of data science systems and a follower of competitive esports frameworks, I wanted to map out whether the social waves generated on gaming platforms directly coordinate pricing trends inside the digital marketplace. This analysis maps out how public hype shifts absolute commodity scales.</p>
         </div>
     </section>
@@ -465,7 +484,7 @@
             <p>* <strong>Feature Importance Analysis:</strong> Despite low linear predictability, isolating tree splits inside our Gradient Boosting pipeline verified that **daily Twitch audience weight (`ort_izleyici`) is the absolute dominant vector driving value variance**, securing over 80% of the structural model prominence scores.</p>
 
             <div class="visualization-box">
-                <img src="ml_final_strict_hypothesis.png" alt="Supervised Prediction Analysis Board" onerror="this.src='ml_analysis_results.png'">
+                <img src="ml_final_strict_hypothesis.png" alt="Supervised Prediction Analysis Board" onerror="this.src='https://placehold.co/900x400/152232/00ffcc?text=ml_final_strict_hypothesis.png'">
                 <div class="visualization-caption">Figure 2: Empirical machine learning metrics comparing algorithm performance grids against feature importance ranks.</div>
             </div>
         </div>
