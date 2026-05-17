@@ -42,6 +42,7 @@ All project files are maintained directly in the root directory for absolute con
 * `cs2_kmeans_market_states.png` & `kmeans_evaluation_professional.png`: Visualization output mapping macro market clustering boundaries.
 * `ml_final_strict_hypothesis.png`: Final validation chart pairing comparative cross-model evaluation grids alongside empirical feature weights.
 
+* `requirements.txt`: Environment dependencies file containing all required Python libraries for absolute reproducibility.
 ---
 
 ## 🚀 Analytical Architecture & Methodology
