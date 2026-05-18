@@ -6,6 +6,7 @@
     <title>CS2 Market Dynamics & Viewership Analytics | Serkan Dağ</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --bg-dark: #0b1119;
@@ -29,10 +30,9 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            padding-top: 75px; /* Added padding to prevent content from hiding under navbar */
+            padding-top: 75px; 
         }
 
-        /* Navbar Layout */
         header {
             position: fixed;
             top: 0;
@@ -84,9 +84,8 @@
             color: var(--primary-neon);
         }
 
-        /* Hero Section - Matching Reference Profile Layout */
         .hero-section {
-            padding: 60px 20px 80px 20px; /* Reduced top padding as we have body padding-top */
+            padding: 60px 20px 80px 20px; 
             background: linear-gradient(180deg, #152232 0%, #0b1119 100%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -126,7 +125,6 @@
             margin-bottom: 30px;
         }
 
-        /* Metrics Tracker Grid */
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(4, 110px);
@@ -158,7 +156,7 @@
             display: block;
         }
 
-        .hero-actions .btn {
+        .hero-actions .btn, .explorer-controls .btn {
             display: inline-block;
             text-decoration: none;
             padding: 12px 24px;
@@ -166,6 +164,7 @@
             font-weight: 600;
             border-radius: 6px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .btn-primary {
@@ -180,16 +179,16 @@
         }
 
         .btn-outline {
+            background: transparent;
             border: 1px solid var(--primary-neon);
             color: var(--primary-neon);
         }
 
-        .btn-outline:hover {
+        .btn-outline:hover, .btn-outline.active {
             background-color: var(--primary-neon);
             color: var(--bg-dark);
         }
 
-        /* Standard Rounded Profile Wrapper Matching Reference Layout */
         .hero-avatar {
             width: 320px;
             height: 320px;
@@ -197,16 +196,15 @@
             border: 4px solid var(--bg-card);
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            flex-shrink: 0; /* Prevents image from shrinking in small viewports */
+            flex-shrink: 0; 
         }
 
         .hero-avatar img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Important to keep aspect ratio while filling circular container */
+            object-fit: cover; 
         }
 
-        /* Sections Structural Pattern */
         .section-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -248,7 +246,6 @@
             font-size: 1rem;
         }
 
-        /* Data Sources Cards Grid */
         .source-item {
             margin-bottom: 30px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -288,7 +285,6 @@
             color: var(--text-main);
         }
 
-        /* Image Grids for Deliverables */
         .visualization-box {
             margin-top: 30px;
             text-align: center;
@@ -319,7 +315,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Mobile Responsiveness Framework */
         @media (max-width: 900px) {
             .hero-container {
                 flex-direction: column-reverse;
@@ -332,7 +327,7 @@
                 grid-template-columns: repeat(4, 80px);
             }
             .metric-val { font-size: 1.4rem; }
-            .nav-menu { display: none; } /* Simplified mobile view */
+            .nav-menu { display: none; } 
         }
     </style>
 </head>
@@ -350,6 +345,7 @@
                 <li><a href="#methodology">Methodology</a></li>
                 <li><a href="#eda">EDA</a></li>
                 <li><a href="#ml">ML Results</a></li>
+                <li><a href="#explorer">Explorer</a></li>
                 <li><a href="#conclusions">Conclusions</a></li>
             </ul>
         </div>
@@ -383,7 +379,7 @@
 
                 <div class="hero-actions">
                     <a href="#motivation" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> Read the Story</a>
-                    <a href="#ml" class="btn btn-outline"><i class="fa-solid fa-square-poll-vertical"></i> View Findings</a>
+                    <a href="#explorer" class="btn btn-outline"><i class="fa-solid fa-wand-magic-sparkles"></i> Try Explorer</a>
                 </div>
             </div>
             <div class="hero-avatar">
@@ -480,12 +476,36 @@
         <div class="content-card">
             <p>Our machine learning layout deploys both unsupervised and supervised steps to map asset metrics:</p>
             <p>* <strong>Unsupervised Clustering (K-Means):</strong> Discovered 3 autonomous market states tracking a cluster efficiency profile ($0.464$). The system mapped out clear boundaries separating *Stagnant Markets*, *Transition Nodes*, and high-density *Hype Markets*.</p>
-            <p>* <strong>Supervised Performance Evaluation:</strong> Predictive models yielded low baseline $R^2$ parameters. This supports the financial **Random Walk Hypothesis**, verifying that calculating specific asset pricing points using only platform crowd logs remains bounded by market efficiency.</p>
-            <p>* <strong>Feature Importance Analysis:</strong> Despite low linear predictability, isolating tree splits inside our Gradient Boosting pipeline verified that **daily Twitch audience weight (`ort_izleyici`) is the absolute dominant vector driving value variance**, securing over 80% of the structural model prominence scores.</p>
+            
+            <div class="visualization-box">
+                <img src="kmeans_evaluation_professional.png" alt="K-Means Market States Clustering" onerror="this.src='https://placehold.co/900x400/152232/00ffcc?text=kmeans_evaluation_professional.png'">
+                <div class="visualization-caption">Figure 2: Unsupervised K-Means clustering isolating three distinct macroeconomic market states (Hype, Transition, Stagnant).</div>
+            </div>
+
+            <p style="margin-top: 30px;">* <strong>Supervised Performance Evaluation:</strong> Predictive models yielded low baseline $R^2$ parameters. This supports the financial **Random Walk Hypothesis**, verifying that calculating specific asset pricing points using only platform crowd logs remains bounded by market efficiency.</p>
+            <p>* <strong>Feature Importance Analysis:</strong> Despite low linear predictability, isolating tree splits inside our Gradient Boosting pipeline verified that **daily Twitch audience weight (`avg_viewer`) is the absolute dominant vector driving value variance**, securing over 80% of the structural model prominence scores.</p>
 
             <div class="visualization-box">
                 <img src="ml_final_strict_hypothesis.png" alt="Supervised Prediction Analysis Board" onerror="this.src='https://placehold.co/900x400/152232/00ffcc?text=ml_final_strict_hypothesis.png'">
-                <div class="visualization-caption">Figure 2: Empirical machine learning metrics comparing algorithm performance grids against feature importance ranks.</div>
+                <div class="visualization-caption">Figure 3: Empirical machine learning metrics comparing algorithm performance grids against feature importance ranks.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="explorer" class="section-container">
+        <h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Interactive Asset Explorer</h2>
+        <div class="section-subtitle">Sample Subset of the Processed CS2 Commodities</div>
+        <div class="content-card">
+            <p>Use the dashboard below to filter and analyze the unique operational parameters of the datasets we extracted via the Steam API and Liquipedia pipelines. Click the buttons to dynamically isolate weapon skins and tournament stickers:</p>
+            
+            <div class="explorer-controls" style="margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                <button class="btn btn-outline active" id="btn-all" onclick="filterData('All')">All Assets</button>
+                <button class="btn btn-outline" id="btn-skin" onclick="filterData('Skin')">Weapon Skins</button>
+                <button class="btn btn-outline" id="btn-sticker" onclick="filterData('Sticker')">Tournament Stickers</button>
+            </div>
+
+            <div style="position: relative; height: 350px; width: 100%; background: rgba(0,0,0,0.2); border-radius: 8px; padding: 15px; border: 1px solid rgba(255,255,255,0.05);">
+                <canvas id="assetChart"></canvas>
             </div>
         </div>
     </section>
@@ -524,6 +544,110 @@
                 }
             });
         });
+
+        // CHART.JS INTERACTIVE LOGIC
+        const rawData = [
+            { name: "AK-47 | Redline (FT)", type: "Skin", price: 24.50 },
+            { name: "AWP | Asiimov (FT)", type: "Skin", price: 115.00 },
+            { name: "M4A1-S | Printstream (MW)", type: "Skin", price: 185.50 },
+            { name: "Desert Eagle | Blaze (FN)", type: "Skin", price: 420.00 },
+            { name: "Glock-18 | Water Elemental", type: "Skin", price: 8.50 },
+            { name: "Paris 2023 Contenders Capsule", type: "Sticker", price: 0.25 },
+            { name: "Sticker | Titan | Katowice 2014", type: "Sticker", price: 3500.00 },
+            { name: "Sticker | iBUYPOWER | Col. 2014", type: "Sticker", price: 120.00 },
+            { name: "Antwerp 2022 Legends Capsule", type: "Sticker", price: 1.10 },
+            { name: "Sticker | Cloud9 (Holo) | Bos. 2018", type: "Sticker", price: 85.00 }
+        ];
+
+        let assetChart;
+
+        function initChart(dataToShow) {
+            const ctx = document.getElementById('assetChart').getContext('2d');
+            
+            if (assetChart) {
+                assetChart.destroy();
+            }
+
+            const labels = dataToShow.map(item => item.name);
+            const prices = dataToShow.map(item => item.price);
+            
+            const bgColors = dataToShow.map(item => 
+                item.type === 'Skin' ? 'rgba(0, 255, 204, 0.6)' : 'rgba(243, 169, 35, 0.6)'
+            );
+            const borderColors = dataToShow.map(item => 
+                item.type === 'Skin' ? 'rgba(0, 255, 204, 1)' : 'rgba(243, 169, 35, 1)'
+            );
+
+            assetChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Average Market Price ($)',
+                        data: prices,
+                        backgroundColor: bgColors,
+                        borderColor: borderColors,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return '$' + context.parsed.y.toFixed(2);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            type: 'logarithmic',
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { 
+                                color: '#9ca3af',
+                                callback: function(value, index, values) {
+                                    if (value === 0.1 || value === 1 || value === 10 || value === 100 || value === 1000 || value === 10000) {
+                                        return '$' + value;
+                                    }
+                                }
+                            }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { 
+                                color: '#9ca3af',
+                                maxRotation: 45,
+                                minRotation: 45,
+                                font: { size: 10 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function filterData(type) {
+            document.querySelectorAll('.explorer-controls .btn').forEach(btn => btn.classList.remove('active'));
+            if(type === 'All') document.getElementById('btn-all').classList.add('active');
+            else if(type === 'Skin') document.getElementById('btn-skin').classList.add('active');
+            else if(type === 'Sticker') document.getElementById('btn-sticker').classList.add('active');
+
+            if (type === 'All') {
+                initChart(rawData);
+            } else {
+                const filtered = rawData.filter(item => item.type === type);
+                initChart(filtered);
+            }
+        }
+
+        window.onload = () => {
+            filterData('All');
+        };
     </script>
 </body>
 </html>
