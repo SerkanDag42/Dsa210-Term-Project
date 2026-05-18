@@ -5,6 +5,7 @@
 **Course:** DSA 210 - Introduction to Data Science  
 **Student:** Serkan Dağ  
 **Academic Semester:** Spring 2026  
+**WebSite:** https://serkandag42.github.io/Dsa210-Term-Project/#home
 
 ---
 
