@@ -42,6 +42,10 @@ All project files are maintained directly in the root directory for absolute con
 * `cs2_kmeans_market_states.png` & `kmeans_evaluation_professional.png`: Visualization output mapping macro market clustering boundaries.
 * `ml_final_strict_hypothesis.png`: Final validation chart pairing comparative cross-model evaluation grids alongside empirical feature weights.
 
+### 5. Final Deliverables & Web Dashboard
+* `index.html`: The interactive single-page application (SPA) acting as the project's visual dashboard, embedded with Chart.js for dynamic asset exploration.
+* `Dsa 210 Final Report.pdf`: The comprehensive academic final report documenting the entire methodology, statistical proofs, limitations, and empirical conclusions.
+
 * `requirements.txt`: Environment dependencies file containing all required Python libraries for absolute reproducibility.
 ---
 
@@ -64,7 +68,7 @@ To extract clean structural behaviors from highly fluctuating economic periods, 
 ### Phase 3: Supervised Learning (Predictive Modeling Framework)
 We benchmarked four regression algorithms—**Linear Regression**, **Optimized KNN Regressor** (tuned via `GridSearchCV` bounding), **Random Forest**, and **Gradient Boosting**—using an 80/20 train-test split pattern:
 * **The Predictive Reality ($R^2 \approx 0$):** Cross-validation metrics resulted in baseline $R^2$ tracking close to zero across independent parameters. In quantitative finance, this matches the **Random Walk Hypothesis**. This outcome confirms our pipeline is completely free of **Target Leakage**; predicting precise asset values using only basic daily crowd volume is bounded by market efficiency.
-* **Feature Importance Profiling:** Despite low predictive linearity, isolating node-split ratios inside the Gradient Boosting framework provided clear confirmation of our primary assumption. Daily streaming crowd volume (`ort_izleyici`) holds over **80%** of the feature importance score, proving it is the single most dominant external factor guiding virtual asset market fluctuations.
+* **Feature Importance Profiling:** Despite low predictive linearity, isolating node-split ratios inside the Gradient Boosting framework provided clear confirmation of our primary assumption. Daily streaming crowd volume (`avg_viewer`) holds over **80%** of the feature importance score, proving it is the single most dominant external factor guiding virtual asset market fluctuations.
 
 ---
 
