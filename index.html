@@ -450,7 +450,7 @@
             <p style="margin-left: 40px; color: var(--text-muted); margin-bottom: 15px;">Data variables were passed through log transformations to control skewness and standardized via Scikit-Learn's StandardScaler layer before computing distances.</p>
             
             <p style="margin-left: 20px; font-weight: 600; color: var(--primary-neon);">3. Bounded Tuning Framework</p>
-            <p style="margin-left: 40px; color: var(--text-muted);">Hyperparameter tracking was resolved utilizing an automated GridSearchCV loop over 5 cross-validation splits to isolate stable neighborhood parameters ($K$).</p>
+            <p style="margin-left: 40px; color: var(--text-muted);">Hyperparameter tracking was resolved utilizing an automated GridSearchCV loop over 5 cross-validation splits to isolate stable neighborhood parameters (K).</p>
         </div>
     </section>
 
@@ -459,9 +459,9 @@
         <div class="section-subtitle">Hypothesis Formulations & Statistical Tests</div>
         <div class="content-card">
             <p>Before launching predictive models, we evaluated our assumptions through robust hypothesis frameworks:</p>
-            <p>* <strong>Pearson Correlation Analysis:</strong> Identified a statistically significant, non-linear relationship between active viewing density and market value indices ($p < 0.05$).</p>
-            <p>* <strong>Independent Two-Sample T-Test:</strong> Reclaimed definitive verification that transaction velocity and index points during operational championship dates significantly shift from non-tournament phases.</p>
-            <p>* <strong>One-Way ANOVA Framework:</strong> Confirmed that distinct competitive layers (Valve-sponsored Majors vs Independent S-Tier brackets) execute varying scales of economic impacts on item asset lines.</p>
+            <p><strong>Pearson Correlation Analysis:</strong> Identified a statistically significant, non-linear relationship between active viewing density and market value indices (p &lt; 0.05).</p>
+            <p><strong>Independent Two-Sample T-Test:</strong> Reclaimed definitive verification that transaction velocity and index points during operational championship dates significantly shift from non-tournament phases.</p>
+            <p><strong>One-Way ANOVA Framework:</strong> Confirmed that distinct competitive layers (Valve-sponsored Majors vs Independent S-Tier brackets) execute varying scales of economic impacts on item asset lines.</p>
             
             <div class="visualization-box">
                 <img src="final_tournament_twitch_impact.png" alt="Esports Impact Trend Visualization" onerror="this.src='https://placehold.co/900x400/152232/f3a923?text=final_tournament_twitch_impact.png'">
@@ -475,15 +475,15 @@
         <div class="section-subtitle">Clustering and Regression Benchmarking</div>
         <div class="content-card">
             <p>Our machine learning layout deploys both unsupervised and supervised steps to map asset metrics:</p>
-            <p>* <strong>Unsupervised Clustering (K-Means):</strong> Discovered 3 autonomous market states tracking a cluster efficiency profile ($0.464$). The system mapped out clear boundaries separating *Stagnant Markets*, *Transition Nodes*, and high-density *Hype Markets*.</p>
+            <p><strong>Unsupervised Clustering (K-Means):</strong> Discovered 3 autonomous market states tracking a cluster efficiency profile (0.464). The system mapped out clear boundaries separating <em>Stagnant Markets</em>, <em>Transition Nodes</em>, and high-density <em>Hype Markets</em>.</p>
             
             <div class="visualization-box">
                 <img src="kmeans_evaluation_professional.png" alt="K-Means Market States Clustering" onerror="this.src='https://placehold.co/900x400/152232/00ffcc?text=kmeans_evaluation_professional.png'">
                 <div class="visualization-caption">Figure 2: Unsupervised K-Means clustering isolating three distinct macroeconomic market states (Hype, Transition, Stagnant).</div>
             </div>
 
-            <p style="margin-top: 30px;">* <strong>Supervised Performance Evaluation:</strong> Predictive models yielded low baseline $R^2$ parameters. This supports the financial **Random Walk Hypothesis**, verifying that calculating specific asset pricing points using only platform crowd logs remains bounded by market efficiency.</p>
-            <p>* <strong>Feature Importance Analysis:</strong> Despite low linear predictability, isolating tree splits inside our Gradient Boosting pipeline verified that **daily Twitch audience weight (`avg_viewer`) is the absolute dominant vector driving value variance**, securing over 80% of the structural model prominence scores.</p>
+            <p style="margin-top: 30px;"><strong>Supervised Performance Evaluation:</strong> Predictive models yielded low baseline R<sup>2</sup> parameters. This supports the financial <strong>Random Walk Hypothesis</strong>, verifying that calculating specific asset pricing points using only platform crowd logs remains bounded by market efficiency.</p>
+            <p><strong>Feature Importance Analysis:</strong> Despite low linear predictability, isolating tree splits inside our Gradient Boosting pipeline verified that <strong>daily Twitch audience weight (<code>avg_viewer</code>) is the absolute dominant vector driving value variance</strong>, securing over 80% of the structural model prominence scores.</p>
 
             <div class="visualization-box">
                 <img src="ml_final_strict_hypothesis.png" alt="Supervised Prediction Analysis Board" onerror="this.src='https://placehold.co/900x400/152232/00ffcc?text=ml_final_strict_hypothesis.png'">
@@ -545,7 +545,6 @@
             });
         });
 
-        // CHART.JS INTERACTIVE LOGIC
         const rawData = [
             { name: "AK-47 | Redline (FT)", type: "Skin", price: 24.50 },
             { name: "AWP | Asiimov (FT)", type: "Skin", price: 115.00 },
