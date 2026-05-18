@@ -8,7 +8,7 @@ print(" Initializing local HTML scraper for Liquipedia...")
 
 # 1. LOAD LOCAL HTML FILE
 try:
-    with open("liquipedia.html", "r", encoding="utf-8") as f:
+    with open("data/raw/liquipedia.html", "r", encoding="utf-8") as f:
         html_content = f.read()
 except FileNotFoundError:
     print(" ERROR: 'liquipedia.html' not found in the current directory.")
@@ -84,7 +84,7 @@ for row in rows:
 df = pd.DataFrame(tournaments_data)
 
 if not df.empty:
-    df.to_csv('tournaments.csv', index=False)
+    df.to_csv('data/raw/tournaments.csv', index=False)
     print(f"SUCCESS: Extracted and formatted {len(df)} tournaments.")
     print("\n--- EXTRACTED DATA SAMPLE ---")
     print(df.head(10))

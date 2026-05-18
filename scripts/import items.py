@@ -8,8 +8,8 @@ import os
 from datetime import datetime
 
 # File paths
-TXT_FILE = "itemler.txt"
-CSV_FILE = "dsa210_mega_data.csv"
+TXT_FILE = "data/raw/itemler.txt"
+CSV_FILE = "data/raw/dsa210_mega_data.csv"
 
 # Read TXT file
 if not os.path.exists(TXT_FILE):
@@ -30,9 +30,9 @@ if os.path.exists(CSV_FILE):
     
     # Exclude already downloaded items
     items_to_track = [item for item in items_to_track if item not in existing_items]
-    print(f"✅ CSV file found! Already downloaded items will be skipped.")
+    print(f" CSV file found! Already downloaded items will be skipped.")
 
-print(f"🚀 MEGA OPERATION: Found {len(items_to_track)} new items to fetch!")
+print(f" MEGA OPERATION: Found {len(items_to_track)} new items to fetch!")
 print("-" * 60)
 
 headers = {

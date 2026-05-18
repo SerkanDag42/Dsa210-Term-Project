@@ -43,6 +43,6 @@ for i, current_date in enumerate(dates):
 
 df_viewers = pd.DataFrame(data_stream)
 
-df_viewers.to_csv("cs2_gunluk_izleyici.csv", index=False)
+df_viewers.to_csv("data/raw/cs2_gunluk_izleyici.csv", index=False)
 
 print(" Viewership data stream successfully generated and verified!")

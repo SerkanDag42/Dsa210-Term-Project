@@ -6,13 +6,16 @@ from scipy import stats
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score, mean_absolute_error
+import os
 import warnings
 warnings.filterwarnings('ignore')
 
-# 1. LOAD ENRICHED DATA
-df = pd.read_csv("enriched_market_data.csv")
+# 1. LOAD ENRICHED DATA (Veriyi processed klasöründen okuyoruz)
+df = pd.read_csv("data/processed/enriched_market_data.csv")
 df['date'] = pd.to_datetime(df['date'])
-df.rename(columns={'ort_izleyici': 'avg_viewer'}, inplace=True)
+
+# İngilizce sütun uyumu (Hata vermemesi için errors='ignore' kullanıyoruz)
+df.rename(columns={'ort_izleyici': 'avg_viewer', 'tarih': 'date'}, inplace=True, errors='ignore')
 
 # Find item columns (excluding date, Tournament, avg_viewer, and tarih)
 item_columns = [col for col in df.columns if col not in ['date', 'Tournament', 'avg_viewer', 'tarih']]
@@ -92,7 +95,10 @@ ax2.set_title('What Drives the Market? (Feature Importance)', fontweight='bold')
 ax2.set_xlabel('Importance Score', fontweight='bold')
 
 plt.tight_layout()
-plt.savefig('ml_analysis_results.png', dpi=300)
-print("\n Plots saved as 'ml_analysis_results.png'!")
+
+os.makedirs("results", exist_ok=True)
+plot_filename = "results/ml_analysis_results.png"
+plt.savefig(plot_filename, dpi=300)
+print(f"\n Plots saved as '{plot_filename}'!")
 print("="*60)
 plt.show()
